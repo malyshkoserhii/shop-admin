@@ -1,6 +1,11 @@
+html {
+	box-sizing: border-box;
+}
+
 body {
 	margin: 0;
 	overflow-x: hidden;
+	font-family: "Poppins Regular", sans-serif !important;
 }
 
 h1,
@@ -15,16 +20,32 @@ h6 {
 /* Your Fonts */
 
 @font-face {
-	font-family: Manrope;
-	src: url('../../../../assets/fonts/Manrope-VariableFont_wght.ttf');
+	font-family: Poppins Regular;
+	src: url('../../assets/fonts/poppins/Poppins-Regular.ttf');
 	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F,
 		U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: Manrope Bold;
-	src: url('../../../../assets/fonts/manrope.bold.otf');
+	font-family: Poppins Medium;
+	src: url('../../assets/fonts/poppins/Poppins-Medium.ttf');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F,
+		U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Poppins Semi Bold;
+	src: url('../../assets/fonts/poppins/Poppins-SemiBold.ttf');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F,
+		U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: Poppins Bold;
+	src: url('../../assets/fonts/poppins/Poppins-Bold.ttf');
 	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F,
 		U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 	font-display: swap;
@@ -47,6 +68,10 @@ ol {
 	list-style: none;
 }
 
+p {
+	margin: 0;
+}
+
 button {
 	outline: none !important;
 }
@@ -66,13 +91,6 @@ input {
 	clip: rect(0 0 0 0);
 	overflow: hidden;
 }
-
-/* input[type="range"] {
-	-webkit-appearance: none;
-	appearance: none;
-	background: transparent;
-	width: 100%;
-} */
 
 .ReactVirtualized__List::-webkit-scrollbar {
 	width: 6px;

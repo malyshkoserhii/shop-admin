@@ -1,11 +1,16 @@
 import * as React from 'react';
-import App from '~modules/app/app.module';
+import { publicRoutes } from './routes';
+import { Container } from '~shared/components/container';
+import { Header } from '~shared/components/header';
+import { Footer } from '~shared/components/footer';
+import { Main } from '~shared/components/main';
 
-const Router: React.FunctionComponent = () => {
+export const MainRouter: React.FunctionComponent = () => {
 	return (
-		// Implement Routes
-		<App />
+		<Container>
+			<Header />
+			<Main>{publicRoutes}</Main>
+			<Footer />
+		</Container>
 	);
 };
-
-export default Router;

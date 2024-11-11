@@ -1,5 +1,13 @@
 import * as React from 'react';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { LoginPage } from '~modules/app/auth/pages';
+import { ROUTER_KEYS } from '~shared/keys';
 
-export const publicRoutes = <>// PUBLIC_ROUTES</>;
+export const publicRoutes = (
+	<Routes>
+		<Route path="/*" element={<Navigate to={ROUTER_KEYS.ALL_MATCH} />} />
+		<Route path={ROUTER_KEYS.LOGIN} element={<LoginPage />} />
+	</Routes>
+);
 
-export const privateRoutes = <>// PRIVATE_ROUTES</>;
+export const privateRoutes = <Routes></Routes>;
