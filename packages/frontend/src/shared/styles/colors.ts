@@ -1,9 +1,14 @@
-export const colors = Object.freeze({
+export const COLORS = Object.freeze({
+	black: '#000',
+	white: '#fff',
+	taupe_gray: '#898989',
+	blueberry: '#5397F5',
+
+	// TODO: Remove unused colors
 	mediumVioletRed: '#D50A84',
 	philippineGray: '#8A8A8A',
 	maastrichtBlue: '#0B183B',
 	spaceCadet: '#20294A',
-	white: '#fff',
 	lotion: '#FAFAFA',
 	jacarta: '#363E5C',
 	japaneseIndigo: '#2C3554',
@@ -24,7 +29,6 @@ export const colors = Object.freeze({
 	americanPurple: '#442356',
 	independence: '#464E6B',
 	erieBlack: '#10191f',
-	black: '#000',
 	majorelleBlue: '#7140D9',
 	oceanBlue: '#5C28CC',
 	violetRYB: '#6200C0',

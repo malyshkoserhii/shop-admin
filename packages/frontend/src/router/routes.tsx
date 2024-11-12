@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { LoginPage } from '~modules/app/auth/pages';
+import { LoginPage } from '~modules/app/auth/pages/login/login.page';
 import { ROUTER_KEYS } from '~shared/keys';
 
 export const publicRoutes = (

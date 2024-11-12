@@ -1,34 +1,20 @@
 import { css } from '@emotion/css';
-import { colors } from '../../styles';
 
-export const btnStyles = (disabled: boolean): string => {
-	return css`
-		width: 100%;
-		padding: 17px 0;
-		font-size: 20px;
-		font-weight: 700;
-		color: ${disabled ? colors.imperial : colors.white};
-		background-color: ${disabled
-			? colors.americanPurple
-			: colors.mediumVioletRed};
-		border: none;
-		border-radius: 28px;
-		box-shadow: 0px 1px 1px rgba(255, 255, 255, 0.06);
-		text-align: center;
-	`;
-};
+import { COLORS } from '../../styles';
+import { FONT_FAMILIES } from '~shared/styles/fonts';
 
-export const btnContentWrapper = css`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-`;
+export const btnStyles = css`
+	width: 120px !important;
+	padding: 10px 0 !important;
+	font-size: 14px !important;
+	font-family: ${FONT_FAMILIES.poppins_regular} !important;
+	color: ${COLORS.white} !important;
+	background-color: ${COLORS.blueberry} !important;
+	border-radius: 10px !important;
+	border: 1px solid ${COLORS.blueberry} !important;
+	box-shadow: none !important;
 
-export const iconWrapper = css`
-	display: flex;
-	align-items: center;
-`;
-
-export const mr = css`
-	margin-right: 15px;
+	:focus {
+		outline: 1px solid ${COLORS.black} !important;
+	}
 `;

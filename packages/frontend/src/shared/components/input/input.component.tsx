@@ -7,11 +7,21 @@ import {
 	FieldValues,
 } from 'react-hook-form';
 
-type TextInputProps<
+import { input, inputSection, labelStyles } from './input.styles';
+import classNames from 'classnames';
+
+type TextInputProps = {
+	label: string;
+	extraInputSectionStyles?: string;
+	extraInputStyles?: string;
+};
+
+type InputProps<
 	TFieldValues extends FieldValues = FieldValues,
 	TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 > = Pick<ControllerProps<TFieldValues, TName>, 'name' | 'control' | 'rules'> &
-	ComponentPropsWithoutRef<'input'>;
+	ComponentPropsWithoutRef<'input'> &
+	TextInputProps;
 
 export function Input<
 	T extends FieldValues = FieldValues,
@@ -22,15 +32,24 @@ export function Input<
 	rules,
 	onChange,
 	onBlur,
+	label,
+	extraInputSectionStyles,
+	extraInputStyles,
 	...rest
-}: TextInputProps<T, U>): React.ReactNode {
+}: InputProps<T, U>): React.ReactNode {
 	return (
 		<Controller
 			name={name}
 			rules={rules}
 			control={control}
 			render={({ field, fieldState }) => (
-				<div>
+				<section
+					className={classNames(
+						inputSection,
+						extraInputSectionStyles,
+					)}
+				>
+					<label className={labelStyles}>{label}</label>
 					<input
 						{...rest}
 						{...field}
@@ -42,11 +61,12 @@ export function Input<
 							field.onChange(e);
 							onChange?.(e);
 						}}
+						className={classNames(input, extraInputStyles)}
 					/>
 					{fieldState.error && fieldState.error.message && (
 						<div>{fieldState.error.message}</div>
 					)}
-				</div>
+				</section>
 			)}
 		/>
 	);
