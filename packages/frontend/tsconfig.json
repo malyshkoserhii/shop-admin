@@ -54,6 +54,9 @@
 			],
 			"~images/*": [
 				"src/assets/images/*"
+			],
+			"~services/*": [
+				"src/services/*"
 			]
 		}
 	},

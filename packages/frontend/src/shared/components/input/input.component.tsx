@@ -7,7 +7,13 @@ import {
 	FieldValues,
 } from 'react-hook-form';
 
-import { input, inputSection, labelStyles } from './input.styles';
+import {
+	errorMessage,
+	input,
+	inputSection,
+	inputWithError,
+	labelStyles,
+} from './input.styles';
 import classNames from 'classnames';
 
 type TextInputProps = {
@@ -61,10 +67,16 @@ export function Input<
 							field.onChange(e);
 							onChange?.(e);
 						}}
-						className={classNames(input, extraInputStyles)}
+						className={classNames(input, extraInputStyles, {
+							[inputWithError]: Boolean(
+								fieldState?.error?.message,
+							),
+						})}
 					/>
 					{fieldState.error && fieldState.error.message && (
-						<div>{fieldState.error.message}</div>
+						<p className={errorMessage}>
+							{fieldState.error.message}
+						</p>
 					)}
 				</section>
 			)}

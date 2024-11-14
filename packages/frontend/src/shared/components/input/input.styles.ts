@@ -4,6 +4,7 @@ import { fontStyleRegular } from '~shared/styles/default-styles';
 import { FONT_FAMILIES } from '~shared/styles/fonts';
 
 export const inputSection = css`
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	margin-bottom: 20px;
@@ -21,4 +22,17 @@ export const input = css`
 	border-radius: 10px;
 	font-family: ${FONT_FAMILIES.poppins_regular};
 	font-size: 14px;
+`;
+
+export const inputWithError = css`
+	border: solid 1px ${COLORS.begonia};
+`;
+
+export const errorMessage = css`
+	position: absolute;
+	left: 0;
+	bottom: -30px;
+	font-family: ${FONT_FAMILIES.poppins_regular};
+	font-size: 14px;
+	color: ${COLORS.begonia};
 `;
