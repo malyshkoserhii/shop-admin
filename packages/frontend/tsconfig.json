@@ -46,9 +46,6 @@
 			"~poppins/*": [
 				"src/assets/poppins/*"
 			],
-			"~untitled folder/*": [
-				"src/assets/untitled folder/*"
-			],
 			"~fonts/*": [
 				"src/assets/fonts/*"
 			],
@@ -57,6 +54,9 @@
 			],
 			"~services/*": [
 				"src/services/*"
+			],
+			"~products/*": [
+				"src/modules/products/*"
 			]
 		}
 	},

@@ -1,19 +1,45 @@
-import { createWithEqualityFn } from 'zustand/traditional';
-import { shallow } from 'zustand/shallow';
+import { createStore } from 'zustand/vanilla';
+import { createJSONStorage, persist } from 'zustand/middleware';
+
+type Tokens = {
+	access_token: string | null;
+	refresh_token: string | null;
+};
 
 type AuthStore = {
 	auth: boolean;
 	setAuth: (isAuth: boolean) => void;
+	tokens: Tokens;
+	setTokens: (tokens: Tokens) => void;
 };
 
-export const useAuthStore = createWithEqualityFn<AuthStore>((set) => {
-	return {
-		auth: false,
-		setAuth: (auth: boolean): void =>
-			set(() => {
-				return {
-					auth,
-				};
-			}),
-	};
-}, shallow);
+export const useAuthStore = createStore<AuthStore>()(
+	persist(
+		(set) => {
+			return {
+				auth: false,
+				tokens: {
+					access_token: null,
+					refresh_token: null,
+				},
+				setAuth: (auth: boolean): void =>
+					set(() => {
+						return {
+							auth,
+						};
+					}),
+				setTokens: (tokens: Tokens): void =>
+					set(() => {
+						return {
+							tokens,
+						};
+					}),
+			};
+		},
+
+		{
+			name: 'tokens',
+			storage: createJSONStorage(() => localStorage),
+		},
+	),
+);

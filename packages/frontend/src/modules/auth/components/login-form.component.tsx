@@ -6,7 +6,7 @@ import { Input } from '~shared/components/input';
 import { formStyles, inputSection } from './login-form.styles';
 import Button from '~shared/components/button/button.component';
 import { useAuthStore } from '~store/auth.store';
-import { QUERY_KEYS, STORAGE_KEYS } from '~shared/keys';
+import { QUERY_KEYS } from '~shared/keys';
 import { authService } from '~/services';
 import { SignInResponse } from '~/services/auth.types';
 import { AxiosError } from 'axios';
@@ -18,7 +18,8 @@ type LoginFormValues = {
 };
 
 export const LoginForm = (): React.ReactNode => {
-	const setAuth = useAuthStore((state) => state.setAuth);
+	const setAuth = useAuthStore.getState().setAuth;
+	const setTokens = useAuthStore.getState().setTokens;
 
 	const { control, handleSubmit, setError } = useForm({
 		defaultValues: {
@@ -34,15 +35,8 @@ export const LoginForm = (): React.ReactNode => {
 		mutationKey: [QUERY_KEYS.AUTH],
 		mutationFn: signin,
 		onSuccess: (response: SignInResponse) => {
-			localStorage.setItem(
-				STORAGE_KEYS.ACCESS_TOKEN,
-				response.access_token,
-			);
-			localStorage.setItem(
-				STORAGE_KEYS.REFRESH_TOKEN,
-				response.refresh_token,
-			);
 			setAuth(true);
+			setTokens(response);
 		},
 		onError: (error: AxiosError<IServerError>) => {
 			console.log('🚀 ~ LoginForm ~ error:', error.response.data.message);
