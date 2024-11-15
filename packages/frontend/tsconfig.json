@@ -81,6 +81,12 @@
 			],
 			"~orders/*": [
 				"src/modules/orders/*"
+			],
+			"~untitled folder/*": [
+				"src/assets/untitled folder/*"
+			],
+			"~icons/*": [
+				"src/assets/icons/*"
 			]
 		}
 	},
