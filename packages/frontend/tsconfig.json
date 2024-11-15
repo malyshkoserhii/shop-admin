@@ -56,7 +56,28 @@
 				"src/services/*"
 			],
 			"~products/*": [
-				"src/modules/products/*"
+				"src/modules/products/screens/products/*"
+			],
+			"~app/*": [
+				"src/modules/app/*"
+			],
+			"~auth/*": [
+				"src/modules/auth/*"
+			],
+			"~constants/*": [
+				"src/shared/constants/*"
+			],
+			"~components/*": [
+				"src/modules/auth/components/*"
+			],
+			"~pages/*": [
+				"src/modules/auth/pages/*"
+			],
+			"~screens/*": [
+				"src/modules/products/screens/*"
+			],
+			"~login/*": [
+				"src/modules/auth/pages/login/*"
 			]
 		}
 	},
