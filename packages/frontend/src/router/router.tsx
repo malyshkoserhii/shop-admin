@@ -1,11 +1,19 @@
 import * as React from 'react';
-import App from '~modules/app/app.module';
+import { privateRoutes, publicRoutes } from './routes';
+import { Container } from '~shared/components/container';
+import { Header } from '~shared/components/header';
+import { Footer } from '~shared/components/footer';
+import { Main } from '~shared/components/main';
+import { useAuthStore } from '~store/auth.store';
 
-const Router: React.FunctionComponent = () => {
+export const MainRouter: React.FunctionComponent = () => {
+	const auth = useAuthStore((state) => state.auth);
+
 	return (
-		// Implement Routes
-		<App />
+		<Container>
+			<Header />
+			<Main>{auth ? privateRoutes : publicRoutes}</Main>
+			<Footer />
+		</Container>
 	);
 };
-
-export default Router;

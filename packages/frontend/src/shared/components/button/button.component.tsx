@@ -1,65 +1,36 @@
 import * as React from 'react';
-import Loader from '../loader/loader.component';
+import {
+	Button as BlueprintButton,
+	ButtonProps as BlueprintButtonProps,
+	Intent,
+} from '@blueprintjs/core';
 import classNames from 'classnames';
 
-import { btnContentWrapper, btnStyles, iconWrapper, mr } from './button.styles';
+import { btnStyles } from './button.styles';
 
-type IButtonProps = {
+type ButtonProps = {
 	text: string;
-	type?: 'button' | 'submit' | 'reset';
 	onClick?: () => void;
-	loading?: boolean;
-	disabled?: boolean;
-	extraButtonStyles?: string;
-	icon?: React.ReactNode;
+	intent?: Intent;
+	extraBtnStyles?: string;
+	props?: BlueprintButtonProps;
 };
 
-const Button: React.FunctionComponent<IButtonProps> = ({
+const Button: React.FunctionComponent<ButtonProps> = ({
 	text,
-	type = 'submit',
+	intent = 'primary',
+	extraBtnStyles,
 	onClick,
-	loading,
-	disabled,
-	extraButtonStyles,
-	icon,
+	props,
 }) => {
-	const isDisabled = Boolean(loading ?? disabled);
-
-	const handleClick = (): void => {
-		if (isDisabled) {
-			return;
-		}
-
-		onClick?.();
-	};
-
 	return (
-		<button
-			disabled={isDisabled}
-			type={type}
-			onClick={handleClick}
-			className={classNames(
-				btnStyles(Boolean(disabled)),
-				extraButtonStyles,
-			)}
-		>
-			{Boolean(loading) ? (
-				<Loader />
-			) : (
-				<span className={btnContentWrapper}>
-					{icon && (
-						<span
-							className={classNames(iconWrapper, {
-								[mr]: Boolean(text),
-							})}
-						>
-							{icon}
-						</span>
-					)}
-					{text}
-				</span>
-			)}
-		</button>
+		<BlueprintButton
+			text={text}
+			intent={intent}
+			className={classNames([btnStyles, extraBtnStyles])}
+			onClick={onClick}
+			{...props}
+		/>
 	);
 };
 

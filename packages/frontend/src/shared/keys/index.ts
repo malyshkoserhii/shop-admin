@@ -1,9 +1,14 @@
 export const enum ROUTER_KEYS {
 	ALL_MATCH = '/*',
-	LOGIN = '/login',
-	DASHBOARD = '/dashboard',
+	LOGIN = '/',
+	PRODUCTS = 'products',
 }
 
 export const STORAGE_KEYS = Object.freeze({
-	TOKEN: 'TOKEN',
+	ACCESS_TOKEN: 'ACCESS_TOKEN',
+	REFRESH_TOKEN: 'REFRESH_TOKEN',
+});
+
+export const QUERY_KEYS = Object.freeze({
+	AUTH: 'AUTH',
 });

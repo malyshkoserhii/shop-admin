@@ -42,6 +42,21 @@
 			],
 			"~/*": [
 				"src/*"
+			],
+			"~poppins/*": [
+				"src/assets/poppins/*"
+			],
+			"~fonts/*": [
+				"src/assets/fonts/*"
+			],
+			"~images/*": [
+				"src/assets/images/*"
+			],
+			"~services/*": [
+				"src/services/*"
+			],
+			"~products/*": [
+				"src/modules/products/*"
 			]
 		}
 	},
