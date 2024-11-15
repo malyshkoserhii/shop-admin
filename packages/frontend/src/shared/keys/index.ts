@@ -2,6 +2,7 @@ export const enum ROUTER_KEYS {
 	ALL_MATCH = '/*',
 	LOGIN = '/',
 	PRODUCTS = 'products',
+	ORDERS = 'orders',
 }
 
 export const STORAGE_KEYS = Object.freeze({

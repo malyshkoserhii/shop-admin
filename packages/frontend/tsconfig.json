@@ -78,6 +78,9 @@
 			],
 			"~login/*": [
 				"src/modules/auth/pages/login/*"
+			],
+			"~orders/*": [
+				"src/modules/orders/*"
 			]
 		}
 	},
