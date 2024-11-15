@@ -18,8 +18,8 @@ type LoginFormValues = {
 };
 
 export const LoginForm = (): React.ReactNode => {
-	const setAuth = useAuthStore.getState().setAuth;
-	const setTokens = useAuthStore.getState().setTokens;
+	const setAuth = useAuthStore((state) => state.setAuth);
+	const setTokens = useAuthStore((state) => state.setTokens);
 
 	const { control, handleSubmit, setError } = useForm({
 		defaultValues: {
@@ -35,11 +35,11 @@ export const LoginForm = (): React.ReactNode => {
 		mutationKey: [QUERY_KEYS.AUTH],
 		mutationFn: signin,
 		onSuccess: (response: SignInResponse) => {
+			console.log('here');
 			setAuth(true);
 			setTokens(response);
 		},
 		onError: (error: AxiosError<IServerError>) => {
-			console.log('🚀 ~ LoginForm ~ error:', error.response.data.message);
 			setError('password', { message: error.response.data.message });
 		},
 	});

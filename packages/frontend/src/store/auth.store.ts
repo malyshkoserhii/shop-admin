@@ -1,4 +1,4 @@
-import { createStore } from 'zustand/vanilla';
+import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
 type Tokens = {
@@ -13,7 +13,7 @@ type AuthStore = {
 	setTokens: (tokens: Tokens) => void;
 };
 
-export const useAuthStore = createStore<AuthStore>()(
+export const useAuthStore = create<AuthStore>()(
 	persist(
 		(set) => {
 			return {
@@ -38,7 +38,7 @@ export const useAuthStore = createStore<AuthStore>()(
 		},
 
 		{
-			name: 'tokens',
+			name: 'auth',
 			storage: createJSONStorage(() => localStorage),
 		},
 	),
