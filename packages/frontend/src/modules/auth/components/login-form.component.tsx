@@ -7,8 +7,8 @@ import { formStyles, inputSection } from './login-form.styles';
 import Button from '~shared/components/button/button.component';
 import { useAuthStore } from '~store/auth.store';
 import { QUERY_KEYS } from '~shared/keys';
-import { authService } from '~/services';
-import { SignInResponse } from '~/services/auth.types';
+import { authService } from '~/services/auth';
+import { SignInResponse } from '~/services/auth/auth.types';
 import { AxiosError } from 'axios';
 import { IServerError } from '~shared/services/types';
 

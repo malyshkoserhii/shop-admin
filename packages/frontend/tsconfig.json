@@ -56,13 +56,13 @@
 				"src/services/*"
 			],
 			"~products/*": [
-				"src/modules/products/pages/products/*"
+				"src/services/products/*"
 			],
 			"~app/*": [
 				"src/modules/app/*"
 			],
 			"~auth/*": [
-				"src/modules/auth/*"
+				"src/services/auth/*"
 			],
 			"~constants/*": [
 				"src/shared/constants/*"

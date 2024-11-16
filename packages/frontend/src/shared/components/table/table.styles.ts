@@ -8,6 +8,8 @@ export const tableStyles = css`
 	max-width: 100%;
 	width: 958px;
 	border-collapse: collapse;
+
+	margin-bottom: 60px;
 `;
 
 export const headerStyles = css`

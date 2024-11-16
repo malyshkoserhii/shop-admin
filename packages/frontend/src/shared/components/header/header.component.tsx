@@ -13,7 +13,7 @@ import {
 } from './header.styles';
 import { useAuthStore } from '~store/auth.store';
 import { QUERY_KEYS, ROUTER_KEYS } from '~shared/keys';
-import { authService } from '~/services';
+import { authService } from '~/services/auth';
 import { IServerError } from '~shared/services/types';
 
 export const Header = (): React.ReactNode => {
