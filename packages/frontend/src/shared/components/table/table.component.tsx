@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import { btn, headerStyles, rowStyles, tableStyles } from './table.styles';
 
-import Logo from '../../../assets/icons/vector.svg';
+import Logo from '../../../assets/icons/edit.svg';
 
 type TableProps<T, C> = {
 	data: Array<T>;

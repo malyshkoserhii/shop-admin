@@ -9,9 +9,7 @@ export const btnStyles = css`
 	font-size: 14px !important;
 	font-family: ${FONT_FAMILIES.poppins_regular} !important;
 	color: ${COLORS.white} !important;
-	background-color: ${COLORS.blueberry} !important;
 	border-radius: 10px !important;
-	border: 1px solid ${COLORS.blueberry} !important;
 	box-shadow: none !important;
 
 	:focus {

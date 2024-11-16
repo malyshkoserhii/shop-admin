@@ -1,6 +1,10 @@
 import * as React from 'react';
 
-import { productsScreenContainer } from './products.styles';
+import {
+	actionsBlock,
+	productsScreenContainer,
+	tableWrapper,
+} from './products.styles';
 import { Table } from '~shared/components/table';
 import {
 	PRODUCT_KEYS,
@@ -14,6 +18,8 @@ import { Product } from '~shared/types/entities.types';
 import { productsService } from '~/services/products';
 import { useProductsStore } from '~store/products.store';
 import { Pagination } from '~shared/components/pagination';
+import { Button } from '~shared/components/button';
+import { Modal } from '~shared/components/modal';
 
 export const ProductsScreen = (): React.ReactNode => {
 	const products = useProductsStore((state) => state.products);
@@ -21,6 +27,10 @@ export const ProductsScreen = (): React.ReactNode => {
 
 	const [page, setPage] = React.useState(1);
 	const [totalPages, setTotalPages] = React.useState(1);
+
+	const [isOpen, setIsOpen] = React.useState(false);
+
+	const toggleOpen = (): void => setIsOpen((prev) => !prev);
 
 	React.useEffect(() => {
 		const findAllProducts = async (): Promise<void> => {
@@ -43,17 +53,35 @@ export const ProductsScreen = (): React.ReactNode => {
 	};
 
 	return (
-		<div className={productsScreenContainer}>
-			<Table<Product, Columns<ProductFields>>
-				data={products}
-				columns={productColumns}
-			/>
+		<>
+			<div className={productsScreenContainer}>
+				<div className={actionsBlock}>
+					<Button text="Add Product" onClick={toggleOpen} />
+				</div>
 
-			<Pagination
-				totalPages={totalPages}
-				onPageChange={onPageChange}
-				forcePage={page}
-			/>
-		</div>
+				<div className={tableWrapper}>
+					<Table<Product, Columns<ProductFields>>
+						data={products}
+						columns={productColumns}
+					/>
+
+					<Pagination
+						totalPages={totalPages}
+						onPageChange={onPageChange}
+						forcePage={page}
+					/>
+				</div>
+			</div>
+			<Modal
+				isOpen={isOpen}
+				negativeActionBtnTxt="Delete"
+				positiveActionBtnTxt="Save"
+				negativeActionCb={() => {}}
+				positiveActionCb={() => {}}
+				toggleOpen={toggleOpen}
+			>
+				<></>
+			</Modal>
+		</>
 	);
 };
