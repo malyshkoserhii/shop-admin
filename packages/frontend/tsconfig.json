@@ -56,7 +56,7 @@
 				"src/services/*"
 			],
 			"~products/*": [
-				"src/modules/products/screens/products/*"
+				"src/modules/products/pages/products/*"
 			],
 			"~app/*": [
 				"src/modules/app/*"
@@ -74,7 +74,7 @@
 				"src/modules/auth/pages/*"
 			],
 			"~screens/*": [
-				"src/modules/products/screens/*"
+				"src/modules/products/pages/*"
 			],
 			"~login/*": [
 				"src/modules/auth/pages/login/*"

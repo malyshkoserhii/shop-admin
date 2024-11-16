@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { LoginPage } from '~modules/auth/pages/login/login.page';
-import { OrdersScreen } from '~modules/orders/screens/orders';
-import { ProductsScreen } from '~modules/products/screens/products';
+import { OrdersScreen } from '~modules/orders/pages/orders';
+import { ProductsScreen } from '~modules/products/pages/products';
 import { ROUTER_KEYS } from '~shared/keys';
 
 export const publicRoutes = (
