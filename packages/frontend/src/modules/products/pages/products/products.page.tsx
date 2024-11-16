@@ -20,6 +20,12 @@ import { useProductsStore } from '~store/products.store';
 import { Pagination } from '~shared/components/pagination';
 import { Button } from '~shared/components/button';
 import { Modal } from '~shared/components/modal';
+import { ProductForm } from '~modules/products/components/product-form';
+import {
+	CreateProductPayload,
+	CreateProductResponse,
+} from '~/services/products/products.types';
+import { useMutation } from '@tanstack/react-query';
 
 export const ProductsScreen = (): React.ReactNode => {
 	const products = useProductsStore((state) => state.products);
@@ -31,6 +37,20 @@ export const ProductsScreen = (): React.ReactNode => {
 	const [isOpen, setIsOpen] = React.useState(false);
 
 	const toggleOpen = (): void => setIsOpen((prev) => !prev);
+
+	const productColumns = formCols<ProductFields>(PRODUCT_KEYS, HEADERS);
+
+	const onPageChange = (selectedItem: { selected: number }): void => {
+		setPage(selectedItem?.selected);
+	};
+
+	const addProduct = async (
+		payload: CreateProductPayload,
+	): Promise<CreateProductResponse> => await productsService.create(payload);
+
+	const { mutateAsync: createProduct } = useMutation({
+		mutationFn: addProduct,
+	});
 
 	React.useEffect(() => {
 		const findAllProducts = async (): Promise<void> => {
@@ -44,13 +64,7 @@ export const ProductsScreen = (): React.ReactNode => {
 			setTotalPages(products.total_pages);
 		};
 		findAllProducts();
-	}, [page]);
-
-	const productColumns = formCols<ProductFields>(PRODUCT_KEYS, HEADERS);
-
-	const onPageChange = (selectedItem: { selected: number }): void => {
-		setPage(selectedItem?.selected);
-	};
+	}, [page, createProduct]);
 
 	return (
 		<>
@@ -72,15 +86,11 @@ export const ProductsScreen = (): React.ReactNode => {
 					/>
 				</div>
 			</div>
-			<Modal
-				isOpen={isOpen}
-				negativeActionBtnTxt="Delete"
-				positiveActionBtnTxt="Save"
-				negativeActionCb={() => {}}
-				positiveActionCb={() => {}}
-				toggleOpen={toggleOpen}
-			>
-				<></>
+			<Modal isOpen={isOpen} toggleOpen={toggleOpen}>
+				<ProductForm
+					toggleModal={toggleOpen}
+					createProduct={createProduct}
+				/>
 			</Modal>
 		</>
 	);
