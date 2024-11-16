@@ -8,15 +8,13 @@ import Logo from '../../../assets/icons/edit.svg';
 type TableProps<T, C> = {
 	data: Array<T>;
 	columns: Array<C>;
+	onEditPress: (id: string) => void;
 };
 
 export function Table<
 	T extends { id: string },
 	C extends { field: keyof T; header: string },
->({ data, columns }: TableProps<T, C>): React.ReactNode {
-	const onButtonPress = (id: string): void => {
-		console.log('🚀 ~ onButtonPress ~ id:', id);
-	};
+>({ data, columns, onEditPress }: TableProps<T, C>): React.ReactNode {
 	return (
 		<table className={tableStyles}>
 			<thead>
@@ -44,7 +42,7 @@ export function Table<
 							})}
 							<td
 								className={classNames(rowStyles, btn)}
-								onClick={() => onButtonPress(row.id)}
+								onClick={() => onEditPress(row.id)}
 							>
 								<span>
 									<Logo />

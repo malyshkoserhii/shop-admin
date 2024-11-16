@@ -18,4 +18,5 @@ export const tableWrapper = css`
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-between;
+	flex-grow: 1;
 `;

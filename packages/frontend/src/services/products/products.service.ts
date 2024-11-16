@@ -5,6 +5,7 @@ import {
 	CreateProductResponse,
 	FindAllPoductsPayload,
 	FindAllPoductsResponse,
+	UpdateProductPayload,
 } from './products.types';
 
 export class ProductsService {
@@ -28,6 +29,21 @@ export class ProductsService {
 		return await this.httpService.post(`${this.module}/create`, {
 			...payload,
 		});
+	}
+
+	public async findUnique(id: string): Promise<CreateProductResponse> {
+		return await this.httpService.get(`${this.module}/${id}`);
+	}
+
+	public async update(
+		payload: UpdateProductPayload,
+	): Promise<CreateProductResponse> {
+		return await this.httpService.post(
+			`${this.module}/update/${payload.id}`,
+			{
+				...payload,
+			},
+		);
 	}
 }
 

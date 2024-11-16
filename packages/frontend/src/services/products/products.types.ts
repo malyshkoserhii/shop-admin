@@ -24,3 +24,8 @@ export type CreateProductResponse = {
 	createdAt: string;
 	updatedAt: string;
 };
+
+export type UpdateProductPayload = Pick<
+	Product,
+	'id' | 'name' | 'description' | 'price' | 'stock_quantity' | 'category'
+>;

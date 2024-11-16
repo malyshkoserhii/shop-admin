@@ -1,6 +1,6 @@
 import { css } from '@emotion/css';
+
 import { COLORS } from '~shared/styles';
-import { FONT_FAMILIES } from '~shared/styles/fonts';
 
 export const dialog = css`
 	background-color: ${COLORS.white} !important;
@@ -17,12 +17,4 @@ export const crossBtn = css`
 	border: none;
 	background-color: transparent;
 	cursor: pointer;
-`;
-
-export const modalTitle = css`
-	font-family: ${FONT_FAMILIES.poppins_semi_bold};
-	font-size: 24px;
-	line-height: 36px;
-	text-align: center;
-	margin-bottom: 40px;
 `;

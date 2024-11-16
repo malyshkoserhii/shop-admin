@@ -6,11 +6,13 @@ import {
 	btnsBox,
 	deleteBtn,
 	formStyles,
+	formTitle,
 	inputSection,
 } from './product-form.styles';
 import {
 	CreateProductPayload,
 	CreateProductResponse,
+	UpdateProductPayload,
 } from '~/services/products/products.types';
 import { Button } from '~shared/components/button';
 
@@ -23,29 +25,42 @@ type ProductFormValues = {
 };
 
 type ProductFormProps = {
+	product: CreateProductResponse | null;
 	createProduct: (
 		payload: CreateProductPayload,
 	) => Promise<CreateProductResponse>;
-
-	toggleModal: () => void;
+	editProduct: (
+		paylaod: UpdateProductPayload,
+	) => Promise<CreateProductResponse>;
 };
 
 export const ProductForm: React.FunctionComponent<ProductFormProps> = ({
+	product,
 	createProduct,
-	toggleModal,
+	editProduct,
 }): React.ReactNode => {
 	const { control, handleSubmit } = useForm({
 		defaultValues: {
-			name: '',
-			description: '',
-			price: '',
-			quantity: '',
-			category: '',
+			name: product?.name ?? '',
+			description: product?.description ?? '',
+			price: product?.price ?? '',
+			quantity: product?.stock_quantity ?? '',
+			category: product?.category ?? '',
 		},
 	});
 
 	const onSavePress = async (values: ProductFormValues): Promise<void> => {
-		console.log('🚀 ~ onSavePress ~ values:', values);
+		if (product) {
+			editProduct({
+				id: product.id,
+				name: values.name,
+				description: values.description,
+				price: Number(values.price),
+				stock_quantity: Number(values.quantity),
+				category: values.category,
+			});
+			return;
+		}
 		await createProduct({
 			name: values.name,
 			description: values.description,
@@ -53,15 +68,20 @@ export const ProductForm: React.FunctionComponent<ProductFormProps> = ({
 			stock_quantity: Number(values.quantity),
 			category: values.category,
 		});
-		toggleModal();
 	};
 
 	return (
 		<form onSubmit={handleSubmit(onSavePress)} className={formStyles}>
+			<h2 className={formTitle}>
+				{product ? 'Update Product' : 'Add Product'}
+			</h2>
+
 			<Input
 				control={control}
 				name="name"
-				rules={{ required: { value: true, message: 'Required' } }}
+				rules={{
+					required: { value: true, message: 'Required' },
+				}}
 				label="Name"
 				extraInputSectionStyles={inputSection}
 			/>
@@ -69,7 +89,9 @@ export const ProductForm: React.FunctionComponent<ProductFormProps> = ({
 			<Input
 				control={control}
 				name="description"
-				rules={{ required: { value: true, message: 'Required' } }}
+				rules={{
+					required: { value: true, message: 'Required' },
+				}}
 				label="Description"
 				extraInputSectionStyles={inputSection}
 			/>
@@ -77,7 +99,9 @@ export const ProductForm: React.FunctionComponent<ProductFormProps> = ({
 			<Input
 				control={control}
 				name="price"
-				rules={{ required: { value: true, message: 'Required' } }}
+				rules={{
+					required: { value: true, message: 'Required' },
+				}}
 				label="Price"
 				extraInputSectionStyles={inputSection}
 			/>
@@ -85,7 +109,9 @@ export const ProductForm: React.FunctionComponent<ProductFormProps> = ({
 			<Input
 				control={control}
 				name="quantity"
-				rules={{ required: { value: true, message: 'Required' } }}
+				rules={{
+					required: { value: true, message: 'Required' },
+				}}
 				label="Quantity"
 				extraInputSectionStyles={inputSection}
 			/>
@@ -93,17 +119,21 @@ export const ProductForm: React.FunctionComponent<ProductFormProps> = ({
 			<Input
 				control={control}
 				name="category"
-				rules={{ required: { value: true, message: 'Required' } }}
+				rules={{
+					required: { value: true, message: 'Required' },
+				}}
 				label="Category"
 				extraInputSectionStyles={inputSection}
 			/>
 
 			<div className={btnsBox}>
-				<Button
-					text="Delete"
-					intent="danger"
-					extraBtnStyles={deleteBtn}
-				/>
+				{product && (
+					<Button
+						text="Delete"
+						intent="danger"
+						extraBtnStyles={deleteBtn}
+					/>
+				)}
 				<Button text="Save" props={{ type: 'submit' }} />
 			</div>
 		</form>
