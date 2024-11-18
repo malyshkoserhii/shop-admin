@@ -8,6 +8,7 @@ export const header = css`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	margin-bottom: 90px;
 `;
 
 export const logo = css`

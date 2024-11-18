@@ -56,13 +56,13 @@
 				"src/services/*"
 			],
 			"~products/*": [
-				"src/modules/products/screens/products/*"
+				"src/services/products/*"
 			],
 			"~app/*": [
 				"src/modules/app/*"
 			],
 			"~auth/*": [
-				"src/modules/auth/*"
+				"src/services/auth/*"
 			],
 			"~constants/*": [
 				"src/shared/constants/*"
@@ -74,13 +74,25 @@
 				"src/modules/auth/pages/*"
 			],
 			"~screens/*": [
-				"src/modules/products/screens/*"
+				"src/modules/products/pages/*"
 			],
 			"~login/*": [
 				"src/modules/auth/pages/login/*"
 			],
 			"~orders/*": [
 				"src/modules/orders/*"
+			],
+			"~untitled folder/*": [
+				"src/assets/untitled folder/*"
+			],
+			"~icons/*": [
+				"src/assets/icons/*"
+			],
+			"~types/*": [
+				"src/shared/types/*"
+			],
+			"~utils/*": [
+				"src/shared/utils/*"
 			]
 		}
 	},

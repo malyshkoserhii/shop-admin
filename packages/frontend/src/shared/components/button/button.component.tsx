@@ -16,22 +16,20 @@ type ButtonProps = {
 	props?: BlueprintButtonProps;
 };
 
-const Button: React.FunctionComponent<ButtonProps> = ({
+export const Button: React.FunctionComponent<ButtonProps> = ({
 	text,
-	intent = 'primary',
 	extraBtnStyles,
 	onClick,
+	intent = 'primary',
 	props,
 }) => {
 	return (
 		<BlueprintButton
 			text={text}
-			intent={intent}
 			className={classNames([btnStyles, extraBtnStyles])}
 			onClick={onClick}
+			intent={intent}
 			{...props}
 		/>
 	);
 };
-
-export default Button;
