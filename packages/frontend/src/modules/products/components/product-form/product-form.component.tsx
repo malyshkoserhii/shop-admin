@@ -32,12 +32,14 @@ type ProductFormProps = {
 	editProduct: (
 		paylaod: UpdateProductPayload,
 	) => Promise<CreateProductResponse>;
+	removeProduct: (productId: string) => Promise<void>;
 };
 
 export const ProductForm: React.FunctionComponent<ProductFormProps> = ({
 	product,
 	createProduct,
 	editProduct,
+	removeProduct,
 }): React.ReactNode => {
 	const { control, handleSubmit } = useForm({
 		defaultValues: {
@@ -68,6 +70,10 @@ export const ProductForm: React.FunctionComponent<ProductFormProps> = ({
 			stock_quantity: Number(values.quantity),
 			category: values.category,
 		});
+	};
+
+	const onDeletePress = async (): Promise<void> => {
+		await removeProduct(product.id);
 	};
 
 	return (
@@ -131,6 +137,7 @@ export const ProductForm: React.FunctionComponent<ProductFormProps> = ({
 					<Button
 						text="Delete"
 						intent="danger"
+						onClick={onDeletePress}
 						extraBtnStyles={deleteBtn}
 					/>
 				)}

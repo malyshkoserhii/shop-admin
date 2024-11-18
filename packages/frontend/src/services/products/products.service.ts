@@ -45,6 +45,12 @@ export class ProductsService {
 			},
 		);
 	}
+
+	public async delete(productId: string): Promise<void> {
+		return await this.httpService.delete(
+			`${this.module}/delete/${productId}`,
+		);
+	}
 }
 
 export const productsService = new ProductsService(

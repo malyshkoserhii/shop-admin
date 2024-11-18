@@ -74,6 +74,17 @@ export const ProductsScreen = (): React.ReactNode => {
 		},
 	});
 
+	const deleteProduct = async (productId: string): Promise<void> =>
+		await productsService.delete(productId);
+
+	const { mutateAsync: removeProduct } = useMutation({
+		mutationFn: deleteProduct,
+		onSuccess: async () => {
+			await findAllProducts();
+			toggleModal();
+		},
+	});
+
 	React.useEffect(() => {
 		findAllProducts();
 	}, [page]);
@@ -130,6 +141,7 @@ export const ProductsScreen = (): React.ReactNode => {
 					product={product}
 					createProduct={createProduct}
 					editProduct={editProduct}
+					removeProduct={removeProduct}
 				/>
 			</Modal>
 		</>
