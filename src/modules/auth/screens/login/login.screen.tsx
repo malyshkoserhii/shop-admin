@@ -1,6 +1,6 @@
-import * as React from "react";
-import { Text } from "react-native";
+import * as React from 'react';
+import { Text } from 'react-native';
 
 export const LoginScreen = () => {
-  return <Text>Login Screen</Text>;
+	return <Text>Login Screen</Text>;
 };
