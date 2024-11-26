@@ -6,9 +6,8 @@ import {
 	NAVIGATION_KEYS,
 	RootStackParamList,
 } from '../../types/navigation.type';
-import { SCREEN_OPTIONS } from '../../constants/screen-options';
-import { LoginScreen } from 'src/modules/auth/screens/login';
-
+import { SCREEN_OPTIONS } from '../../constants';
+import { LoginScreen } from '../../../auth/screens/login/login.screen';
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const RootNavigator = () => {
