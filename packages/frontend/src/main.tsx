@@ -7,7 +7,13 @@ import '@blueprintjs/core/lib/css/blueprint.css';
 import { BrowserRouter } from 'react-router-dom';
 import App from '~modules/app/app';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+	defaultOptions: {
+		queries: {
+			staleTime: Infinity,
+		},
+	},
+});
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<QueryClientProvider client={queryClient}>

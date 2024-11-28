@@ -149,3 +149,9 @@ export interface IServerError {
 	message: string;
 	statusCode: number;
 }
+
+export interface PaginatedResponse<T> {
+	data: Array<T>;
+	total_pages: number;
+	total_results: number;
+}

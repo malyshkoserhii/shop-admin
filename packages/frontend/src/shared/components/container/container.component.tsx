@@ -3,7 +3,7 @@ import * as React from 'react';
 import { container } from './containers.styles';
 import { useAuthStore } from '~store/auth.store';
 import { mainAxios } from '~shared/services/mainAxios';
-import { authService } from '~/services';
+import { authService } from '~/services/auth';
 
 type ContainerProps = {
 	children: React.ReactNode;

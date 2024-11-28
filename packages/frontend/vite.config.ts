@@ -6,5 +6,20 @@ import EnvironmentPlugin from 'vite-plugin-environment';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	plugins: [react(), svgr(), ViteAliases(), EnvironmentPlugin('all')],
+	plugins: [
+		react(),
+		svgr({
+			// svgr options: https://react-svgr.com/docs/options/
+			svgrOptions: {
+				exportType: 'default',
+				ref: true,
+				svgo: false,
+				titleProp: true,
+			},
+			include: '**/*.svg',
+		}),
+		,
+		ViteAliases(),
+		EnvironmentPlugin('all'),
+	],
 });
