@@ -11,9 +11,10 @@ import {
 	PRODUCT_KEYS,
 	HEADERS,
 	PRODUCTS_PER_PAGE,
+	PRODUCTS_PRICE_OPTIONS,
 } from '~modules/products/constants/products.consts';
-import { ProductFields } from '~modules/products/types';
-import { Columns } from '~shared/types';
+import { ProductFields, ProductPrice } from '~modules/products/types';
+import { Columns, Options } from '~shared/types';
 import { formCols } from '~shared/utils/from-cols.util';
 import { Product } from '~shared/types/entities.types';
 import { productsService } from '~/services/products';
@@ -27,13 +28,19 @@ import {
 	CreateProductResponse,
 	UpdateProductPayload,
 } from '~/services/products/products.types';
+import { AppSelect } from '~shared/select';
+import { formSelectOptions } from '~shared/utils/form-select-options';
 
-export const ProductsScreen = (): React.ReactNode => {
+const priceOptions = formSelectOptions<ProductPrice>(PRODUCTS_PRICE_OPTIONS);
+
+export const ProductsPage = (): React.ReactNode => {
 	const products = useProductsStore((state) => state.products);
 	const setProducts = useProductsStore((state) => state.setProducts);
 
 	const [page, setPage] = React.useState(0);
 	const [totalPages, setTotalPages] = React.useState(1);
+
+	const [selectedPrice, setSelectedPrice] = React.useState(priceOptions[0]);
 
 	const [isOpen, setIsOpen] = React.useState(false);
 	const [product, setProduct] = React.useState<CreateProductResponse | null>(
@@ -87,7 +94,7 @@ export const ProductsScreen = (): React.ReactNode => {
 
 	React.useEffect(() => {
 		findAllProducts();
-	}, [page]);
+	}, [page, selectedPrice]);
 
 	const findAllProducts = async (): Promise<void> => {
 		const skip = page * PRODUCTS_PER_PAGE;
@@ -95,6 +102,10 @@ export const ProductsScreen = (): React.ReactNode => {
 		const products = await productsService.findAll({
 			skip,
 			take,
+			sort:
+				selectedPrice.value === ProductPrice.HEIGHT_LOW
+					? 'asc'
+					: 'desc',
 		});
 		setProducts(products.data);
 		setTotalPages(products.total_pages);
@@ -115,11 +126,20 @@ export const ProductsScreen = (): React.ReactNode => {
 		}
 	};
 
+	function onPriceItemSelect(item: Options<ProductPrice>): void {
+		setSelectedPrice(item);
+	}
+
 	return (
 		<>
 			<div className={productsScreenContainer}>
 				<div className={actionsBlock}>
 					<Button text="Add Product" onClick={onAddProductPress} />
+					<AppSelect<ProductPrice>
+						options={priceOptions}
+						onItemSelect={onPriceItemSelect}
+						selectedItem={selectedPrice}
+					/>
 				</div>
 
 				<div className={tableWrapper}>

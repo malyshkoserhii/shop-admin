@@ -23,12 +23,14 @@ export type Order = {
 };
 
 export enum PaymentStatus {
+	ALL = 'ALL',
 	COMPLETE = 'COMPLETE',
 	FAILED = 'FAILED',
 	PENDING = 'PENDING',
 }
 
 export enum DeliveryStatus {
+	ALL = 'ALL',
 	PENDING = 'PENDING',
 	IN_TRANSIT = 'IN_TRANSIT',
 	DELIVERED = 'DELIVERED',

@@ -10,6 +10,7 @@ export const productsScreenContainer = css`
 export const actionsBlock = css`
 	width: 958px;
 	display: flex;
+	justify-content: space-between;
 	margin-bottom: 20px;
 `;
 

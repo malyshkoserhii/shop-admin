@@ -18,9 +18,12 @@ export class ProductsService {
 	public async findAll(
 		payload: FindAllPoductsPayload,
 	): Promise<FindAllPoductsResponse> {
-		return await this.httpService.get(
-			`${this.module}/all?skip=${payload.skip}&take=${payload.take}`,
-		);
+		console.log('🚀 ~ ProductsService ~ payload:', payload);
+		const base = `${this.module}/all`;
+		const url = this.httpService.createQueryLink(base, payload);
+
+		console.log('🚀 ~ ProductsService ~ url:', url);
+		return await this.httpService.get(url);
 	}
 
 	public async create(

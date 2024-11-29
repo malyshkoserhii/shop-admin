@@ -6,3 +6,9 @@ export type ProductFields = Pick<
 >;
 
 export type ProductKeys = Array<keyof ProductFields>;
+
+export enum ProductPrice {
+	ALL = 'All',
+	LOW_HEIGT = 'Low to Height',
+	HEIGHT_LOW = 'Height to Low',
+}

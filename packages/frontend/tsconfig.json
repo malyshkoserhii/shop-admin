@@ -93,6 +93,9 @@
 			],
 			"~utils/*": [
 				"src/shared/utils/*"
+			],
+			"~select/*": [
+				"src/shared/select/*"
 			]
 		}
 	},

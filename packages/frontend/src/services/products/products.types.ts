@@ -1,9 +1,12 @@
 import { PaginatedResponse } from '~shared/services/types';
 import { Product } from '~shared/types/entities.types';
 
+type SortOptions = 'asc' | 'desc';
+
 export type FindAllPoductsPayload = {
 	skip: number;
 	take: number;
+	sort: SortOptions;
 };
 
 export type FindAllPoductsResponse = PaginatedResponse<Product>;
