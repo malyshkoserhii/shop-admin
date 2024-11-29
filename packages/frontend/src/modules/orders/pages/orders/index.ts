@@ -1,1 +1,1 @@
-export * from './orders.screen';
+export * from './orders.page';

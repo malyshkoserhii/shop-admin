@@ -80,7 +80,7 @@
 				"src/modules/auth/pages/login/*"
 			],
 			"~orders/*": [
-				"src/modules/orders/*"
+				"src/services/orders/*"
 			],
 			"~untitled folder/*": [
 				"src/assets/untitled folder/*"

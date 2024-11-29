@@ -30,7 +30,7 @@ export const rowStyles = css`
 
 	width: auto;
 
-	max-width: 300px;
+	max-width: 354px;
 
 	text-overflow: ellipsis;
 	overflow: hidden;
