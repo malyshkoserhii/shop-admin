@@ -27,7 +27,7 @@ export const PRODUCTS_OPTIONS_ARRAY = [
 ];
 
 export const PRODUCTS_PRICE_OPTIONS = [
-	ProductPrice.ALL,
-	ProductPrice.HEIGHT_LOW,
-	ProductPrice.LOW_HEIGT,
+	{ option: ProductPrice.ALL, value: undefined },
+	{ option: ProductPrice.HEIGHT_LOW, value: 'asc' },
+	{ option: ProductPrice.LOW_HEIGT, value: 'desc' },
 ];

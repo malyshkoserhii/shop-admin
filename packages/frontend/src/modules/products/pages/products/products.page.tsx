@@ -29,9 +29,6 @@ import {
 	UpdateProductPayload,
 } from '~/services/products/products.types';
 import { AppSelect } from '~shared/select';
-import { formSelectOptions } from '~shared/utils/form-select-options';
-
-const priceOptions = formSelectOptions<ProductPrice>(PRODUCTS_PRICE_OPTIONS);
 
 export const ProductsPage = (): React.ReactNode => {
 	const products = useProductsStore((state) => state.products);
@@ -40,7 +37,9 @@ export const ProductsPage = (): React.ReactNode => {
 	const [page, setPage] = React.useState(0);
 	const [totalPages, setTotalPages] = React.useState(1);
 
-	const [selectedPrice, setSelectedPrice] = React.useState(priceOptions[0]);
+	const [selectedPrice, setSelectedPrice] = React.useState(
+		PRODUCTS_PRICE_OPTIONS[0],
+	);
 
 	const [isOpen, setIsOpen] = React.useState(false);
 	const [product, setProduct] = React.useState<CreateProductResponse | null>(
@@ -102,10 +101,7 @@ export const ProductsPage = (): React.ReactNode => {
 		const products = await productsService.findAll({
 			skip,
 			take,
-			sort:
-				selectedPrice.value === ProductPrice.HEIGHT_LOW
-					? 'asc'
-					: 'desc',
+			sort: selectedPrice.value,
 		});
 		setProducts(products.data);
 		setTotalPages(products.total_pages);
@@ -135,8 +131,8 @@ export const ProductsPage = (): React.ReactNode => {
 			<div className={productsScreenContainer}>
 				<div className={actionsBlock}>
 					<Button text="Add Product" onClick={onAddProductPress} />
-					<AppSelect<ProductPrice>
-						options={priceOptions}
+					<AppSelect
+						options={PRODUCTS_PRICE_OPTIONS}
 						onItemSelect={onPriceItemSelect}
 						selectedItem={selectedPrice}
 					/>
