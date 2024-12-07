@@ -8,6 +8,7 @@ import {
 } from '../../types/navigation.type';
 import { SCREEN_OPTIONS } from '../../constants';
 import { LoginScreen } from '../../../auth/screens/login/login.screen';
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const RootNavigator = () => {
