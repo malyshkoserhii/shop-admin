@@ -2,9 +2,9 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { useForm } from 'react-hook-form';
 
-import { styles } from './login-component.styles';
-import { Input } from '../../../../shared/componetnts/input';
-import { Button } from '../../../../shared/componetnts/button';
+import { styles } from './login-form.styles';
+import { Input } from '../../../../shared/components/input';
+import { Button } from '../../../../shared/components/button';
 
 type LoginFormValues = {
 	email: string;

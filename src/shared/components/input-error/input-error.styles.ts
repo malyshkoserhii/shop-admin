@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { COLORS } from 'src/shared/styles';
 
 export const styles = StyleSheet.create({
 	error: {
@@ -6,5 +7,6 @@ export const styles = StyleSheet.create({
 		bottom: 0,
 		left: 0,
 		fontSize: 12,
+		color: COLORS.red,
 	},
 });

@@ -29,6 +29,7 @@ export const styles = StyleSheet.create({
 	},
 	wrong: {
 		borderWidth: 1,
+		borderColor: COLORS.red,
 	},
 	correct: {
 		borderWidth: 1,

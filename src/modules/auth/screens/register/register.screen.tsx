@@ -2,17 +2,17 @@ import * as React from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import { Layout } from '../../../../shared/components/layout';
-import { LoginForm } from '../../components/login-form/login-form.component';
-import { AuthNav } from '../../components/auth-nav/auth-nav.component';
+import { AuthNav } from '../../components/auth-nav';
+import { RegisterForm } from '../../components/register-form';
 
-export const LoginScreen = () => {
+export const RegisterScreen = () => {
 	return (
 		<KeyboardAwareScrollView
 			showsVerticalScrollIndicator={false}
 			contentContainerStyle={{ flexGrow: 1 }}
 		>
 			<Layout>
-				<LoginForm />
+				<RegisterForm />
 
 				<AuthNav
 					text="Don’t have an account?"

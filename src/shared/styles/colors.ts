@@ -6,4 +6,5 @@ export const COLORS = Object.freeze({
 	platinum: '#E3E3E3',
 	dark_grey: '#A9A9A9',
 	blueberry: '#3C82F6',
+	red: '#FF0000',
 });
