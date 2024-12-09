@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 
-import { COLORS, FONTS } from '../../themes';
+import { COLORS } from '../../../shared/styles';
 
 export const styles = StyleSheet.create({
 	container: {
@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		marginBottom: 30,
-		backgroundColor: 'transparent',
+		height: 40,
 	},
 	titleBox: {
 		justifyContent: 'center',
@@ -17,17 +17,15 @@ export const styles = StyleSheet.create({
 		paddingHorizontal: 16,
 	},
 	title: {
-		marginTop: 30,
-		fontSize: 32,
-		fontFamily: FONTS.Montserrat.semiBold,
-		color: COLORS.eerieBlack,
+		fontSize: 20,
+		color: COLORS.black,
 		textAlign: 'center',
 	},
 	pressarableIcon: {
 		position: 'absolute',
 		zIndex: 10,
-		top: 10,
-		left: 10,
+		top: 0,
+		left: 0,
 		width: 40,
 		height: 40,
 		justifyContent: 'center',

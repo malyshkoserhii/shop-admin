@@ -2,10 +2,9 @@ import * as React from 'react';
 import { StyleProp, Text, TextStyle, View, ViewStyle } from 'react-native';
 
 import { styles } from './header.styles';
-import Logo from 'src/assets/icons/logo.svg';
 import { PressarableIcon } from '../pressarable-icon';
-import Arrow from 'src/assets/icons/arrow.svg';
-import { COLORS } from 'src/shared/themes';
+import Arrow from '../../../../assets/icons/arrow';
+import { COLORS } from '../../../shared/styles';
 
 type HeaderProps = {
 	title?: string;
@@ -32,7 +31,7 @@ export const Header: React.FunctionComponent<HeaderProps> = ({
 		<View style={[styles.container, extraContainerStyles]}>
 			{onArrowPress ? (
 				<PressarableIcon
-					icon={<Arrow stroke={COLORS.eerieBlack} />}
+					icon={<Arrow stroke={COLORS.black} />}
 					onPress={onArrowPress}
 					extraStyles={[styles.pressarableIcon, extraArrowStyles]}
 				/>
@@ -43,7 +42,6 @@ export const Header: React.FunctionComponent<HeaderProps> = ({
 				centralElement
 			) : (
 				<View style={[styles.titleBox, extraTitleBoxStyles]}>
-					<Logo width={87} height={61} />
 					{title && (
 						<Text style={[styles.title, extraTitleStyles]}>
 							{title}

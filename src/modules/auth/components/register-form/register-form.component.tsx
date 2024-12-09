@@ -74,7 +74,7 @@ export const RegisterForm = () => {
 				/>
 			</View>
 
-			<Button text="Sign up" onPress={handleSubmit(onSignUp)} />
+			<Button text="Sign Up" onPress={handleSubmit(onSignUp)} />
 		</View>
 	);
 };
