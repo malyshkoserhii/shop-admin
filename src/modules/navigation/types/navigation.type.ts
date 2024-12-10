@@ -1,9 +1,11 @@
 export enum NAVIGATION_KEYS {
 	LOGIN = 'LOGIN',
 	REGISTER = 'REGISTER',
+	AUTH_VERIFICATION = 'AUTH_VERIFICATION',
 }
 
 export type RootStackParamList = {
 	[NAVIGATION_KEYS.LOGIN]: undefined;
 	[NAVIGATION_KEYS.REGISTER]: undefined;
+	[NAVIGATION_KEYS.AUTH_VERIFICATION]: undefined;
 };

@@ -9,6 +9,7 @@ import {
 import { SCREEN_OPTIONS } from '../../constants';
 import { LoginScreen } from '../../../auth/screens/login';
 import { RegisterScreen } from '../../../auth/screens/register';
+import { AuthVerificationScreen } from '../../../auth/screens/auth-verification';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -26,13 +27,20 @@ export const RootNavigator = () => {
 					component={RegisterScreen}
 					options={SCREEN_OPTIONS}
 				/>
+				<Stack.Screen
+					name={NAVIGATION_KEYS.AUTH_VERIFICATION}
+					component={AuthVerificationScreen}
+					options={SCREEN_OPTIONS}
+				/>
 			</>
 		);
 	}, []);
 
 	return (
 		<NavContainer>
-			<Stack.Navigator initialRouteName={NAVIGATION_KEYS.REGISTER}>
+			<Stack.Navigator
+				initialRouteName={NAVIGATION_KEYS.AUTH_VERIFICATION}
+			>
 				{screens}
 			</Stack.Navigator>
 		</NavContainer>
