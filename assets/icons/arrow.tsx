@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Svg, { Path, SvgProps } from 'react-native-svg';
 
-export default function Arrow(props: SvgProps) {
+export default function ArrowIcon(props: SvgProps) {
 	return (
 		<Svg width="16" height="29" viewBox="0 0 16 29" fill="none" {...props}>
 			<Path

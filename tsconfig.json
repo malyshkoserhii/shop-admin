@@ -5,9 +5,6 @@
     "noImplicitReturns": false,
     "strict": true,
     "baseUrl": ".",
-    "paths": {
-			"src/*": ["src/*"]
-		},
     "allowSyntheticDefaultImports": true,
 		"esModuleInterop": true,
 		"skipLibCheck": false,

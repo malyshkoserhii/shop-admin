@@ -3,7 +3,7 @@ import { StyleProp, Text, TextStyle, View, ViewStyle } from 'react-native';
 
 import { styles } from './header.styles';
 import { PressarableIcon } from '../pressarable-icon';
-import Arrow from '../../../../assets/icons/arrow';
+import ArrowIcon from '../../../../assets/icons/arrow';
 import { COLORS } from '../../../shared/styles';
 
 type HeaderProps = {
@@ -31,7 +31,7 @@ export const Header: React.FunctionComponent<HeaderProps> = ({
 		<View style={[styles.container, extraContainerStyles]}>
 			{onArrowPress ? (
 				<PressarableIcon
-					icon={<Arrow stroke={COLORS.black} />}
+					icon={<ArrowIcon stroke={COLORS.black} />}
 					onPress={onArrowPress}
 					extraStyles={[styles.pressarableIcon, extraArrowStyles]}
 				/>
