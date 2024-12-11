@@ -1,55 +1,46 @@
 import * as React from 'react';
-import { Text } from 'react-native';
+import { View, Text } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import {
-	CodeField,
-	useBlurOnFulfill,
-	useClearByFocusCell,
-} from 'react-native-confirmation-code-field';
 
-import { styles, focused } from './verification.styles';
+import { styles } from './verification.styles';
 import { Layout } from '../../../../shared/components/layout';
 import { Header } from '../../../../shared/components/header';
+import { ConfirmationCodeField } from '../confirmation-code-filed';
+import { Button } from '../../../../shared/components/button';
 
-export const Verification = () => {
-	const [value, setValue] = React.useState('');
-	const [codeFieldProps, getCellOnLayout] = useClearByFocusCell({
-		value,
-		setValue,
-	});
+type VerificationProps = {
+	value: string;
+	setValue: React.Dispatch<React.SetStateAction<string>>;
+	onSubmit: () => void;
+};
 
-	const ref = useBlurOnFulfill({ value, cellCount: 4 });
-
+export const Verification: React.FunctionComponent<VerificationProps> = ({
+	value,
+	setValue,
+	onSubmit,
+}) => {
 	return (
 		<KeyboardAwareScrollView
 			showsVerticalScrollIndicator={false}
-			contentContainerStyle={{ flexGrow: 1, backgroundColor: 'green' }}
+			contentContainerStyle={styles.contentContainer}
 		>
 			<Layout>
-				<Header title="Email Verification" />
+				<View style={styles.container}>
+					<View>
+						<Header title="Email Verification" />
 
-				<CodeField
-					ref={ref}
-					{...codeFieldProps}
-					value={value}
-					onChangeText={setValue}
-					keyboardType="number-pad"
-					textContentType="oneTimeCode"
-					rootStyle={styles.codeFieldRoot}
-					cellCount={4}
-					renderCell={({ index, symbol, isFocused }) => (
-						<Text
-							key={index}
-							onLayout={getCellOnLayout(index)}
-							style={[
-								styles.cell,
-								focused(isFocused).focusedStyles,
-							]}
-						>
-							{symbol}
+						<Text style={styles.title}>
+							Please type the code from the email
 						</Text>
-					)}
-				/>
+
+						<ConfirmationCodeField
+							value={value}
+							setValue={setValue}
+						/>
+					</View>
+
+					<Button text="Sumbit" onPress={onSubmit} />
+				</View>
 			</Layout>
 		</KeyboardAwareScrollView>
 	);

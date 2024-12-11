@@ -5,8 +5,12 @@ import { Verification } from '../../components/verification';
 import { NAVIGATION_KEYS, RootStackParamList } from '../../../navigation/types';
 
 export const AuthVerificationScreen = () => {
+	const [value, setValue] = React.useState('');
 	const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
 	const navSignIn = () => navigation.navigate(NAVIGATION_KEYS.LOGIN);
-	return <Verification />;
+
+	return (
+		<Verification value={value} setValue={setValue} onSubmit={() => {}} />
+	);
 };
