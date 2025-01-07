@@ -1,5 +1,3 @@
-import * as React from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { AxiosError } from 'axios';
 import { useMutation } from '@tanstack/react-query';
