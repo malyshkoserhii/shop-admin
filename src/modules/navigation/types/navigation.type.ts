@@ -19,6 +19,9 @@ export enum NAVIGATION_KEYS {
 	// Private screens
 	HOME = 'HOME',
 	SETTINGS = 'SETTINGS',
+
+	// TEST Screen
+	TEST = 'TEST',
 }
 
 export type RootStackParamList = {
@@ -33,4 +36,5 @@ export type RootStackParamList = {
 	[NAVIGATION_KEYS.BOTTOM_TABS]: undefined;
 	[NAVIGATION_KEYS.HOME]: undefined;
 	[NAVIGATION_KEYS.SETTINGS]: undefined;
+	[NAVIGATION_KEYS.TEST]: undefined;
 };
