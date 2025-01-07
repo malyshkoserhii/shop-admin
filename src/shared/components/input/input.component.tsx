@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+	KeyboardTypeOptions,
 	StyleProp,
 	Text,
 	TextInput,
@@ -33,6 +34,8 @@ type InputProps<
 		  >
 		| undefined;
 	label?: string;
+	keyboardType?: KeyboardTypeOptions;
+	secureTextEntry?: boolean;
 	extraInputContainerStyles?: StyleProp<ViewStyle>;
 	extraErrorStyles?: StyleProp<TextStyle>;
 };
@@ -46,6 +49,8 @@ export function Input<
 	rules,
 	defaultValue,
 	label,
+	secureTextEntry = false,
+	keyboardType = 'default',
 	extraInputContainerStyles,
 	extraErrorStyles = {},
 }: InputProps<T, N>) {
@@ -84,6 +89,8 @@ export function Input<
 				onChangeText={onChange}
 				onBlur={handleBlur}
 				onFocus={handleFocus}
+				secureTextEntry={secureTextEntry}
+				keyboardType={keyboardType}
 				style={[
 					styles.input,
 					value && !error && styles.correct,

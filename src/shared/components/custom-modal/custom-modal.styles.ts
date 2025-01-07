@@ -1,6 +1,6 @@
 import { Dimensions, StyleSheet } from 'react-native';
 
-import { COLORS, FONTS } from 'src/shared/themes';
+import { COLORS } from '../../../shared/styles';
 
 export const styles = StyleSheet.create({
 	modal: {
@@ -39,8 +39,7 @@ export const styles = StyleSheet.create({
 		position: 'relative',
 		left: -18,
 		paddingHorizontal: 24,
-		color: COLORS.eerieBlack,
-		fontFamily: FONTS.Montserrat.medium,
+		color: COLORS.black,
 		fontSize: 20,
 		lineHeight: 24,
 		textAlign: 'center',
@@ -51,8 +50,7 @@ export const styles = StyleSheet.create({
 	},
 	closeTitle: {
 		marginLeft: 12,
-		color: COLORS.antiFlashWhite,
-		fontFamily: FONTS.Montserrat.regular,
+		color: COLORS.black,
 		fontSize: 26,
 		lineHeight: 34,
 		textTransform: 'capitalize',

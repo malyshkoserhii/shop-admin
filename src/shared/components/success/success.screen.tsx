@@ -4,8 +4,8 @@ import { Text, View } from 'react-native';
 import { styles } from './success.styles';
 import { Layout } from '../layout';
 import { Header } from '../header';
-import { Button } from '../button';
-import SuccessIcon from '../../../../assets/icons/success';
+import { Button } from '../../../shared/components/button';
+import SuccessIcon from '../../../assets/icons/success';
 
 type SuccessProps = {
 	text: string;

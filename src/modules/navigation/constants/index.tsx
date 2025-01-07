@@ -1,1 +1,2 @@
-export * from './screen-options';
+export * from './private-routes.consts';
+export * from './public-routes.consts';

@@ -13,7 +13,7 @@ export const RegisterSuccessScreen = () => {
 		<Success
 			text="Account successfully registered!"
 			btnText="Sign In"
-			onPress={() => {}}
+			onPress={navSignIn}
 		/>
 	);
 };

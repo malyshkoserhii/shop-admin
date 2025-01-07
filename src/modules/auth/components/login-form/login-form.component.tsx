@@ -1,32 +1,25 @@
 import * as React from 'react';
-import { View } from 'react-native';
-import { useForm } from 'react-hook-form';
+import { Text, TouchableOpacity, View } from 'react-native';
 
 import { styles } from './login-form.styles';
 import { Input } from '../../../../shared/components/input';
 import { Button } from '../../../../shared/components/button';
-
-type LoginFormValues = {
-	email: string;
-	password: string;
-};
+import { useLogin } from '../../hooks';
+import { InputSection } from '../input-section';
 
 export const LoginForm = () => {
-	const { control, handleSubmit } = useForm<LoginFormValues>({
-		mode: 'all',
-		reValidateMode: 'onChange',
-	});
-
-	const onSignIn = (values: LoginFormValues) => {};
+	const { control, handleSubmit, isPending, onLoginClick, navForgotPwd } =
+		useLogin();
 
 	return (
 		<View style={styles.form}>
-			<View>
+			<InputSection>
 				<Input
 					name="email"
 					control={control}
 					label="Email"
 					defaultValue=""
+					keyboardType="email-address"
 				/>
 
 				<Input
@@ -34,10 +27,19 @@ export const LoginForm = () => {
 					control={control}
 					label="Password"
 					defaultValue=""
+					secureTextEntry={true}
 				/>
-			</View>
 
-			<Button text="Sign in" onPress={handleSubmit(onSignIn)} />
+				<TouchableOpacity onPress={navForgotPwd}>
+					<Text style={styles.forgotPwd}>Forgot password</Text>
+				</TouchableOpacity>
+			</InputSection>
+
+			<Button
+				text="Sign in"
+				onPress={handleSubmit(onLoginClick)}
+				loading={isPending}
+			/>
 		</View>
 	);
 };

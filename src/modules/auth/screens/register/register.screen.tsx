@@ -17,6 +17,9 @@ export const RegisterScreen = () => {
 		<KeyboardAwareScrollView
 			showsVerticalScrollIndicator={false}
 			contentContainerStyle={{ flexGrow: 1 }}
+			extraScrollHeight={20}
+			enableOnAndroid={true}
+			keyboardShouldPersistTaps="handled"
 		>
 			<Layout>
 				<Header title="Sign Up" />

@@ -1,16 +1,29 @@
 import * as React from 'react';
-import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { Verification } from '../../components/verification';
 import { NAVIGATION_KEYS, RootStackParamList } from '../../../navigation/types';
+import { useAuthVerification } from '../../hooks';
 
-export const AuthVerificationScreen = () => {
-	const [value, setValue] = React.useState('');
-	const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+type AuthVerificationScreenProps = NativeStackScreenProps<
+	RootStackParamList,
+	NAVIGATION_KEYS.AUTH_VERIFICATION
+>;
 
-	const navSignIn = () => navigation.navigate(NAVIGATION_KEYS.LOGIN);
+export const AuthVerificationScreen = ({
+	route,
+}: AuthVerificationScreenProps) => {
+	const { value, setValue, isPending, onSubmit } = useAuthVerification({
+		email: route?.params?.email,
+	});
 
 	return (
-		<Verification value={value} setValue={setValue} onSubmit={() => {}} />
+		<Verification
+			value={value}
+			setValue={setValue}
+			onSubmit={onSubmit}
+			headerText="Email Verification"
+			loading={isPending}
+		/>
 	);
 };

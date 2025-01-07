@@ -3,7 +3,7 @@ import { ScrollView, StyleProp, Text, View, ViewStyle } from 'react-native';
 import Modal from 'react-native-modal';
 
 import { styles } from './custom-modal.styles';
-import Cross from 'src/assets/icons/cross.svg';
+import Cross from '../../assets/icons/cross.svg';
 import { PressarableIcon } from '../pressarable-icon';
 
 type ModalProps = {

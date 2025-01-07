@@ -150,8 +150,12 @@ export interface IServerError {
 	statusCode: number;
 }
 
-export interface PaginatedResponse<T> {
+export interface IPaginatedResponse<T> {
 	data: Array<T>;
 	total_pages: number;
 	total_results: number;
+}
+
+export interface IResponseMessage {
+	message: string;
 }

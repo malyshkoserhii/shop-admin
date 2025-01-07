@@ -1,14 +1,16 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { EdgeInsets } from 'react-native-safe-area-context';
 
 import { COLORS } from '../../styles/colors';
+
+const android = Platform.OS === 'android';
 
 export const safeAreaStyles = (insets: EdgeInsets) =>
 	StyleSheet.create({
 		safeArea: {
 			flex: 1,
-			paddingTop: insets.top,
-			paddingBottom: insets.bottom,
+			paddingTop: android ? 20 : insets.top,
+			paddingBottom: android ? 20 : insets.bottom,
 			paddingLeft: insets.left,
 			paddingRight: insets.right,
 		},

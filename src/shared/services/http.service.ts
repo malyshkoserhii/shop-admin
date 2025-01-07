@@ -1,9 +1,8 @@
 import type { IHttpClient } from './types';
 import type { IHttpConfig, IMap, IResponse } from './types';
 
-const QUERY_LINK_OFFSET = 0;
-
-const SERVER_URL = process.env.EXPO_PUBLIC_API_KEY ?? '';
+// const SERVER_URL = 'http://localhost:3030';
+const SERVER_URL = 'http://192.168.0.104:3030';
 
 export class HttpService {
 	constructor(
@@ -17,11 +16,9 @@ export class HttpService {
 	public createQueryLink(base: string, args: IMap): string {
 		let url = `${base}?`;
 
-		Object.keys(args as object).forEach((parameter, index) => {
-			if (Boolean(args[parameter])) {
-				url = `${url}${
-					index > QUERY_LINK_OFFSET ? '&' : ''
-				}${parameter}=${String(args[parameter])}`;
+		Object.keys(args).forEach((parameter) => {
+			if (typeof args[parameter] !== 'undefined') {
+				url = `${url}&${parameter}=${String(args[parameter])}`;
 			}
 		});
 
