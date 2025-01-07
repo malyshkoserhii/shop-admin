@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 
 import { Success } from '../../../../shared/components/success';
