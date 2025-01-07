@@ -15,10 +15,7 @@ export const LoginScreen = () => {
 	const navSignIn = () => navigation.navigate(NAVIGATION_KEYS.REGISTER);
 
 	return (
-		<KeyboardAwareScrollView
-			showsVerticalScrollIndicator={false}
-			contentContainerStyle={{ flexGrow: 1 }}
-		>
+		<KeyboardAwareScrollView>
 			<Layout>
 				<Header title="Sign In" />
 
