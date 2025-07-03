@@ -5,16 +5,19 @@ import { COLORS } from '../../styles/colors';
 
 const android = Platform.OS === 'android';
 
-export const safeAreaStyles = (insets: EdgeInsets) =>
-	StyleSheet.create({
+export const safeAreaStyles = (insets: EdgeInsets, isBottomTab: boolean) => {
+	const paddingMeasure = android ? 20 : insets.bottom;
+
+	return StyleSheet.create({
 		safeArea: {
 			flex: 1,
 			paddingTop: android ? 20 : insets.top,
-			paddingBottom: android ? 20 : insets.bottom,
+			paddingBottom: isBottomTab ? 0 : paddingMeasure,
 			paddingLeft: insets.left,
 			paddingRight: insets.right,
 		},
 	});
+};
 
 export const styles = StyleSheet.create({
 	container: {

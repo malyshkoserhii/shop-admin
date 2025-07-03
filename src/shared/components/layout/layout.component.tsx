@@ -8,12 +8,14 @@ type LayoutProps = {
 	children: React.ReactNode;
 	scrolable?: boolean;
 	extraSafeAreaStyles?: StyleProp<ViewStyle>;
+	isBottomTab?: boolean;
 };
 
 export const Layout: React.FunctionComponent<LayoutProps> = ({
 	children,
 	scrolable = false,
 	extraSafeAreaStyles,
+	isBottomTab = false,
 }) => {
 	const insets = useSafeAreaInsets();
 
@@ -23,7 +25,7 @@ export const Layout: React.FunctionComponent<LayoutProps> = ({
 				<ScrollView>
 					<View
 						style={[
-							safeAreaStyles(insets).safeArea,
+							safeAreaStyles(insets, isBottomTab).safeArea,
 							extraSafeAreaStyles,
 						]}
 					>
@@ -33,7 +35,7 @@ export const Layout: React.FunctionComponent<LayoutProps> = ({
 			) : (
 				<View
 					style={[
-						safeAreaStyles(insets).safeArea,
+						safeAreaStyles(insets, isBottomTab).safeArea,
 						extraSafeAreaStyles,
 					]}
 				>

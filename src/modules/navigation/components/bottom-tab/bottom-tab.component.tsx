@@ -6,7 +6,7 @@ import SettingsIcon from '../../../../assets/icons/settings';
 
 import { COLORS } from '../../../../shared/styles';
 import { NAVIGATION_KEYS } from '../../types';
-import { HomeStackScreens, SettingStackScreens } from '../stacks';
+import { ProductsStackScreens, SettingStackScreens } from '../stacks';
 
 const Tab = createBottomTabNavigator();
 
@@ -20,11 +20,11 @@ export const BottomTabs = () => {
 			}}
 		>
 			<Tab.Screen
-				name={NAVIGATION_KEYS.HOME_STACK}
-				component={HomeStackScreens}
+				name={NAVIGATION_KEYS.PRODUCTS_STACK}
+				component={ProductsStackScreens}
 				options={{
 					title: '',
-					tabBarLabel: 'Home',
+					tabBarLabel: 'Products',
 					tabBarIcon: ({ color }) => <HomeIcon fill={color} />,
 				}}
 			/>

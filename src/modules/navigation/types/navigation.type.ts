@@ -13,11 +13,13 @@ export enum NAVIGATION_KEYS {
 
 	// Stacks
 	BOTTOM_TABS = 'BOTTOM_TABS',
+	PRODUCTS_STACK = 'PRODUCTS_STACK',
 	HOME_STACK = 'HOME_STACK',
 	SETTINGS_STACK = 'SETTINGS_STACK',
 
 	// Private screens
 	HOME = 'HOME',
+	PRODUCTS = 'PRODUCTS',
 	SETTINGS = 'SETTINGS',
 
 	// TEST Screen
@@ -35,6 +37,7 @@ export type RootStackParamList = {
 	[NAVIGATION_KEYS.SET_NEW_PWD_SUCCESS]: undefined;
 	[NAVIGATION_KEYS.BOTTOM_TABS]: undefined;
 	[NAVIGATION_KEYS.HOME]: undefined;
+	[NAVIGATION_KEYS.PRODUCTS]: undefined;
 	[NAVIGATION_KEYS.SETTINGS]: undefined;
 	[NAVIGATION_KEYS.TEST]: undefined;
 };

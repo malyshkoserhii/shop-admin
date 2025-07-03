@@ -2,7 +2,7 @@ import type { IHttpClient } from './types';
 import type { IHttpConfig, IMap, IResponse } from './types';
 
 // const SERVER_URL = 'http://localhost:3030';
-const SERVER_URL = 'http://192.168.0.104:3030';
+const SERVER_URL = 'http://192.168.0.105:3030';
 
 export class HttpService {
 	constructor(
